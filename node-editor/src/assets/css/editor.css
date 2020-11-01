@@ -1,0 +1,29 @@
+/* :root{
+  --red:     #ac4142;
+  --green:   #90a959;
+  --yellow:  #f4bf75;
+  --blue:    #6a9fb5;
+  --maroon:  #8f5536;
+  --purple:  #aa759f;
+  --orange:  #d28445;
+  --cyan:    #75b5aa;
+  --pink:    #ff00cc;
+  --grey:    #7f7f7f;
+} */
+
+
+.cursor{
+  border-left: 2px solid gold;
+  display: inline-block;
+  font-size: 17px;
+  position: absolute;
+  left: 0;
+}
+.cursor div{
+  display: inline-block;
+  background-color: rgba(255,255,255,.1);
+}
+.editor{
+  position: relative;
+  color: rgba(255,255,255,.6);
+}

@@ -1,0 +1,138 @@
+
+.proyect{
+  height: 98.6% !important;
+}
+#proyects {
+  height: 100%;
+  overflow: auto;
+  padding-bottom: 50px;
+}
+#proyects li a.touch-active{
+  color: #72c890;
+}
+#proyects .file-aside > span,
+#proyects .directory > span{
+  display: flex;
+  width: 24px;
+  justify-content: center;
+}
+
+#proyects .file-aside > span i,
+#proyects .directory > span i{
+  margin-right: 0;
+}
+#proyects > button {
+  background: rgba(255, 255, 255, 0.01);
+  padding: 20px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.5px solid rgba(0, 0, 0, 0.4);
+  margin: auto;
+  margin-top: 50px;
+  color: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+#proyects > button i {
+  margin-right: 5px;
+}
+#proyects > button:hover {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Submenus */
+#proyects li {
+  list-style: none;
+  position: relative;
+}
+.sub_menu.primary > a {
+  display: flex;
+  align-items: center;
+}
+.sub_menu.primary > .close{
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  right: 15px;
+  top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sub_menu.primary > .close:hover{
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.sub_menu.primary > .close:after,
+.sub_menu.primary > .close:before{
+  content: "";
+  height: 10px;
+  width: 1.5px;
+  transform: rotate(45deg);
+  background: rgba(255, 255, 255, 0.5);
+  position: absolute;
+}
+.sub_menu.primary > .close:before{
+  transform: rotate(-45deg);
+}
+
+.sub_menu.primary > a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.sub_menu.primary > a i {
+  margin-right: 6px;
+}
+.sub_menu a span {
+  margin-right: 0px;
+}
+.sub_menu {
+  position: relative;
+  list-style: none;
+}
+.sub_menu.active > ul {
+  display: inline-block;
+}
+.sub_menu a {
+  padding: 5px 10px;
+  padding-left: 20px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  pointer-events: visiblePainted;
+  color: var(--white);
+}
+.sub_menu a:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+.sub_menu a > i {
+  margin-right: 5px;
+}
+.sub_menu a .fas{
+  position: absolute;
+  left: 11px;
+  font-size: 10px;
+}
+.sub_menu > ul {
+  left: 20px;
+  position: relative;
+  display: none;
+}
+
+
+.sidebar * {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* extensiones colors */
+.fa-js {
+  color: gold;
+}
+.fa-css3{
+  color: cornflowerblue;
+}
+.fa-html5{
+  color: coral;
+}

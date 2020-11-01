@@ -1,0 +1,46 @@
+.touchMenu{
+  position: absolute;
+  z-index: 1000;
+}
+.touchMenu input{
+  background-color: rgba(255,255,255,.03);
+  color: rgba(255,255,255,.5);
+  border: 0;
+  padding: 5px;
+}
+.touchMenu div:after{
+  content: "";
+  height: 10px;
+  width: 10px;
+  background: var(--dark-two);
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0,0,0,.5);
+  border: 1px solid rgba(255,255,255,.2);
+}
+.touchMenu div{
+  background-color: var(--dark-one);
+  padding: 10px 0;
+  border: .2px solid rgba(255,255,255,.1);
+  box-shadow: 3px 3px 5px rgba(0,0,0,.3);
+  position: relative;
+}
+.touchMenu div li{
+  list-style: none;
+}
+.touchMenu div li a{
+  padding: 8px 10px;
+  color: rgba(255,255,255,.5);
+  display: flex;
+  align-items: center;
+  width: 180px;
+  text-decoration: none;
+}
+.touchMenu div li a i{
+  margin-right: 5px;
+}
+.touchMenu div li a:hover{
+  background-color: rgba(255,255,255,.05);
+}

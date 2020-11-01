@@ -1,0 +1,630 @@
+@import url("https://dev-cats.github.io/code-snippets/JetBrainsMono.css");
+
+:root {
+  --white: rgba(255, 255, 255, 0.6);
+  --blue: #5178d1;
+  --dark-one: #20242a;
+  --dark-two: #272b33;
+  --font-size: 15px;
+  --link-active: #23bd89;
+  --text-active: rgba(255, 255, 255, 0.8);
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Fira Mono";
+  font-weight: 500;
+}
+body {
+  background: antiquewhite;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+main {
+  background: var(--blue);
+  height: 100%;
+}
+main > .top {
+  height: calc(100% - 30px);
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+}
+/* Sidebar */
+main > .top .sidebar {
+  width: 60%;
+  height: 100%;
+  background-color: var(--dark-one);
+  border-right: 1px solid rgba(0, 0, 0, 0.5);
+  position: absolute;
+  z-index: 2;
+  left: -60%;
+  transition: 0.1s linear;
+}
+main > .top .sidebar.active {
+  left: 0;
+}
+main > .top .sidebar .header {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+}
+main > .top .sidebar .body {
+  height: calc(100% - 100px);
+  width: 100%;
+  position: relative;
+}
+
+main > .top .sidebar .body .buttons {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0;
+}
+main > .top .sidebar .body .buttons button {
+  background-color: var(--dark-two);
+  border: 0;
+  color: rgba(219, 224, 244, 0.5);
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+}
+main > .top .sidebar .body .buttons button > i {
+  font-size: 18px;
+}
+.sidebar .body .buttons button ul {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  background: var(--dark-two);
+  padding: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  z-index: 100;
+  flex-direction: column;
+  width: 200px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  animation: modal 0.1s linear;
+  display: none;
+}
+.sidebar .body .buttons button.active ul {
+  display: flex;
+}
+.sidebar .body .buttons button ul li {
+  list-style: none;
+  width: 100%;
+}
+.sidebar .body .buttons button ul li a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 15px;
+}
+main > .top .sidebar .body .buttons button:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+main > .top .sidebar .body .proyect {
+  height: calc(100%);
+}
+
+main > .top .sidebar .body > button {
+  height: 50px;
+  width: 40px;
+  position: absolute;
+  right: -40px;
+  top: calc(50% - 50px);
+  background-color: var(--dark-one);
+  border-radius: 0 20px 20px 0;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-left: 0;
+  outline: none;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.4);
+}
+main > .top .sidebar .body > button.on {
+  color: rgba(255, 255, 255, 0.6);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2),
+    0 0 15px rgba(255, 255, 255, 0.2), 0 0 20px rgba(255, 255, 255, 0.2),
+    0 0 25px rgba(255, 255, 255, 0.2), 0 0 30px rgba(255, 255, 255, 0.2);
+}
+main > .top .sidebar .body > button span {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main > .top .sidebar .body > button span::after {
+  content: "";
+  position: absolute;
+  top: -11px;
+  left: 0;
+  height: 10px;
+  width: 10px;
+  border-radius: 0 0 0 20px;
+  box-shadow: -2.5px 2.5px 0 var(--dark-one);
+  border-left: 1px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+main > .top .sidebar .body > button span::before {
+  content: "";
+  position: absolute;
+  bottom: -11px;
+  left: 0;
+  height: 10px;
+  width: 10px;
+  border-radius: 20px 0 0 0;
+  box-shadow: -2.5px -2.5px 0 var(--dark-one);
+  border-left: 1px solid rgba(0, 0, 0, 0.5);
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+/* lado derecho */
+main > .top .main-editor {
+  width: 100%;
+  height: 100%;
+  background-color: var(--dark-two);
+  position: relative;
+  transition: 0.1s linear;
+}
+main > .top .main-editor.off {
+  margin-left: 60%;
+}
+
+main > .top .main-editor .header {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: var(--dark-one);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+main > .top .main-editor .header div {
+  display: flex;
+  height: 100%;
+  overflow-x: ;
+}
+main > .top .main-editor .header div::-webkit-scrollbar {
+  display: none;
+}
+main > .top .main-editor .header div button {
+  height: 100%;
+  padding: 0 10px;
+  width: 180px;
+  color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background-color: transparent;
+  border-right: 1px solid rgba(0, 0, 0, 0.5);
+  position: relative;
+  outline: none;
+}
+main > .top .main-editor .header div button .close:after,
+main > .top .main-editor .header div button .close:before {
+  content: "";
+  height: 10px;
+  width: 1px;
+  transform: rotate(45deg);
+  background-color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  position: absolute;
+}
+main > .top .main-editor .header div button .close:before {
+  transform: rotate(-45deg);
+}
+main > .top .main-editor .header div button .close {
+  height: 30px;
+  width: 30px;
+  border-radius: 5px;
+  background-color: transparent;
+  opacity: 0;
+  position: absolute;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main > .top .main-editor .header div button.active {
+  background: var(--dark-two);
+  animation: btn-file 0.3s;
+}
+@keyframes btn-file {
+  from {
+    transform: translate(0px, 5px);
+  }
+}
+
+main > .top .main-editor .header div button.active span {
+  opacity: 1;
+}
+main > .top .main-editor .header div button.active:after {
+  content: "";
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--dark-two);
+  z-index: 1;
+}
+main > .top .main-editor .header div button.active:before {
+  content: "";
+  height: calc(100% + 1px);
+  width: 2px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--blue);
+  z-index: 1;
+}
+
+main > .top .main-editor .content-editor {
+  height: calc(100% - 40px);
+  width: 100%;
+  position: relative;
+  padding: 5px;
+}
+.keyboard {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: var(--dark-one);
+  visibility: hidden;
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+}
+.keyboard .row {
+  display: flex;
+  justify-content: space-around;
+  padding: 5px 15px;
+}
+.keyboard button {
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.5);
+  border: 0;
+  width: 40px;
+  height: 60px;
+  outline: none;
+  font-weight: 600;
+  border: 1px solid var(--dark-one);
+  border-radius: 2px;
+}
+.keyboard button > span {
+  width: 100%;
+  height: 33.3333%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+}
+.keyboard button span:nth-child(1),
+.keyboard button span:nth-child(3) {
+  justify-content: space-between;
+}
+.keyboard button span:nth-child(1) i,
+.keyboard button span:nth-child(3) i {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* Footer */
+main > .footer {
+  height: 30px;
+  width: 100%;
+  background-color: var(--dark-one);
+  border-top: 1px solid rgba(0, 0, 0, 0.5);
+}
+main > .footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+main > .footer div {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+main > .footer div span {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-left: 5px;
+}
+main > .footer div span button {
+  height: 100%;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  border: 0;
+  color: rgba(255, 255, 255, 0.4);
+  background-color: transparent;
+  outline: none;
+}
+main > .footer div span button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Animacion click */
+.click {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 100000000;
+}
+.click::after {
+  content: "";
+  border: 0.5px solid pink;
+  animation: click 0.3s forwards;
+  animation-delay: 0s;
+  border-radius: 50%;
+  position: absolute;
+}
+.click::before {
+  content: "";
+  border: 1px solid pink;
+  animation: click 0.3s forwards;
+  animation-delay: 0.1s;
+  border-radius: 50%;
+  position: absolute;
+}
+@keyframes click {
+  0% {
+    height: 10px;
+    width: 10px;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    height: 40px;
+    width: 40px;
+    opacity: 0.5;
+  }
+}
+
+/* Modals */
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  z-index: 3;
+  padding: 40px;
+}
+.modal * {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+@keyframes modal {
+  from {
+    transform: scale(0.8);
+  }
+}
+.modal .modal-content {
+  background: var(--dark-two);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  animation: modal 0.1s linear;
+  border: 0px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal .modal-content h4 {
+  color: rgba(255, 255, 255, 0.5);
+}
+.modal .modal-content.new-file input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--blue);
+  background-color: transparent;
+  border-radius: 5px;
+  outline: none;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.modal .modal-content.new-file button:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.modal .modal-content.file-explorer {
+  height: ;
+}
+.modal .modal-content.file-explorer .modal-body div div {
+  background: rgba(255, 255, 255, 0.01);
+  padding: 20px;
+  margin-top: 10px;
+  color: var(--white);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.modal-header div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-header div h4 {
+  font-size: 20px;
+  padding-left: 20px;
+}
+.modal-header div button {
+  height: 40px;
+  width: 40px;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 0;
+  color: var(--white);
+  border-radius: 5px;
+  outline: none;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-header div button:focus {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.modal-header p {
+  text-align: center;
+  color: var(--blue);
+  font-size: 12px;
+}
+
+.file-explorer .folder i,
+.file-explorer .file i {
+  margin-right: ;
+}
+.file-explorer .folder span,
+.file-explorer .file span {
+  width: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+.file-explorer .folder span img,
+.file-explorer .file span img {
+  width: 20px;
+}
+.file-explorer .icon:before {
+  font-size: 16px;
+}
+.folder.target,
+.file.target {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.modal .modal-content.file-explorer .modal-body {
+  height: 500px;
+  overflow-y: scroll;
+}
+
+.modal .modal-content.file-explorer .modal-body li {
+  display: flex;
+  margin-bottom: 10px;
+  padding: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  list-style: none;
+}
+.modal .modal-content .modal-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.modal .modal-content .modal-footer button {
+  padding: 7px 10px;
+  border-radius: 5px;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
+.modal .modal-content .modal-footer button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.modal#modal-name {
+  z-index: 5;
+}
+
+/* Modal items */
+.modal-items {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 6;
+}
+.modal-items > div {
+  width: 150px;
+  background: var(--dark-two);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.modal-items > div .header h4 {
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.5);
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
+  overflow: hidden;
+}
+.modal-items > div .header h4 img {
+  margin-right: 5px;
+}
+.modal-items > div .body {
+}
+.modal-items > div input {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 0;
+  color: rgba(255, 255, 255, 0.3);
+  outline: none;
+}
+.modal-items > div .body ul li {
+  list-style: none;
+}
+.modal-items > div .body ul li button {
+  padding: 10px;
+  display: flex;
+  width: 100%;
+  background-color: transparent;
+  border: 0;
+  color: rgba(255, 255, 255, 0.6);
+  outline: none;
+}
+.modal-items > div .body ul li button:focus {
+  color: var(--blue);
+}

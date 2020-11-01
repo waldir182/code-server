@@ -1,0 +1,145 @@
+@import url("https://dev-cats.github.io/code-snippets/JetBrainsMono.css");
+:root {
+  --bg: #1c1e26;
+  --currentLine: #44475a;
+  --selection: #44475a;
+  --Comment: #6272a4;
+  --null: #e95678;
+  --string: #fac29a;
+  --number: #f09383;
+  --function: #25b2bc;
+  --reserved: #b877db;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: var(--bg);
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  background-color: rgba(255, 255, 255, 0.01);
+  width: 90%;
+}
+
+main .container {
+  display: block;
+  height: 100%;
+  padding: 40px;
+}
+
+main .contenedor-editor {
+  display: block;
+  min-height: 100px;
+  box-shadow: 0 0 0px rgba(0, 0, 0, 0.2);
+  padding: 20px 0;
+  position: relative;
+}
+
+main .editor {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.01);
+  font-family: "Fira Code";
+}
+main .editor *::selection {
+  background: yellow;
+  text-shadow:none;
+}
+
+main .editor .line {
+  background-color: rgba(255, 255, 255, 0.01);
+  color: var(--null);
+  display: flex;
+  width: 100%;
+  height: 18px;
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+  align-items: center;
+}
+
+
+main .editor .line.active {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+main .editor .line::after {
+  content: attr(data-n);
+  position: absolute;
+  left: -30px;
+  z-index: 10000000000000;
+  color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  font-size: 12px;
+}
+
+main .editor .line span {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.cv {
+  color: var(--string) !important;
+}
+
+.cs {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.cf {
+  color: var(--function) !important;
+}
+
+.cr {
+  color: var(--reserved) !important;
+}
+
+/* Text area */
+
+main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+textarea {
+  margin-top: 40px;
+  background-color: rgba(0, 0, 0, 0.2);
+  outline: none;
+  color: rgba(255, 255, 255, 0.6);
+  border: 0;
+  padding: 0 20px;
+}
+
+/* Cursor simulado */
+
+.cursor {
+  position: absolute;
+  font-size: 15px;
+  top: 0;
+  z-index: 100000;
+  animation: cursor 0.7s infinite;
+}
+
+.cursor div {
+  border-left: 1.5px solid white;
+  height: 140%;
+}
+
+@keyframes cursor {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

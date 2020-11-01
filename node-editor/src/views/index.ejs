@@ -1,0 +1,141 @@
+<%- include('partials/_header') %>
+<main>
+  <div class="top">
+    <div class="sidebar" id="sidebar">
+      <div class="header">
+        Folders
+      </div>
+      <div class="body">
+        <div class="buttons" style="display: none;"
+          <button><i class="fas fa-sync-alt"></i></button>
+          <button class="btn-modal" data-target="file-explorer"><i class="fas fa-folder-plus"></i></button>
+          <button class="button-menu"><i class="fas fa-ellipsis-v"></i>
+            <ul>
+              <li><a href="">Settings<i class="material-icons">settings</i></a></li>
+              <li><a href="">Save File<i class="material-icons">save</i></a></li>
+              <li><a href="">Open File<i class="material-icons">text_snippet</i></a></li>
+              <li><a href="">Open Folder<i class="material-icons">folder</i></a></li>
+              <li><a href="">Shortcuts<i class="material-icons">folder</i></a></li>
+              <li><a href="">Snippets<i class="material-icons">snippet_folder</i></a></li>
+              <li><a href="">Exit<i class="material-icons">exit_to_app</i></a></li>
+            </ul>
+          </button>
+        </div>
+        <div class="proyect">
+          <div id="proyects">
+
+            <% if (folders.length>0) { %>
+            <% folders.forEach(pro => { %>
+            <li class="sub_menu primary">
+              <a class="directory" href="#" data-ruta="<%= pro.rute %>"><i class="fas fa-chevron-right"></i><span>
+                <img src="/images/file-directory.svg">
+              </span>
+                <%= pro.name %> </a>
+              <ul></ul>
+              <span class="close"></span>
+            </li>
+            <% }) %>
+            <% } else{%>
+            <button class="open-folder btn-modal" data-target="file-explorer"><i class="fas fa-plus"></i> Open
+              folder</button>
+            <% } %>
+
+          </div>
+        </div>
+        <button id="toggleBtn"><span>||</span></button>
+      </div>
+    </div>
+    <div class="main-editor">
+      <div class="header">
+        <div>
+<!--           
+          <% arrayFiles.forEach(file => { %>
+          <button data-target="file<%= file.id %>" class="btn-file <%= file.state %>" data-id="<%= file.id %>">
+            <%= file.name %>
+            <span class="close"></span>
+          </button>
+          <% }) %> -->
+
+        </div>
+        <div></div>
+      </div>
+      <div class="content-editor">
+        <!-- Archives -->
+        <div class="archives">
+          <% arrayFiles.forEach(file => { %>
+          <div class="archive-open <%= file.state %>" id="file<%= file.id %>">
+            <div class="numbers"></div>
+            <div class="editor">
+              <div class="cursor" data-id="<%= file.id %>">
+                <div>&nbsp;</div>
+              </div>
+              <div class="dev">
+                <textarea rows="10" spellcheck="false" data-id="<%= file.id %>" id="textarea<%= file.id %>"><%= file.content %></textarea>
+                <button class="save-file" data-rute="<%= file.rute %>" data-target="file<%= file.id %>">Saved</button>
+                <button data-id="<%= file.id %>" class="btn-run">Run</button>
+              </div>
+              <img src="images/file.svg" alt="">
+              <img src="images/file-directory.svg">
+              <img src="images/file-directory-light.svg">
+              <img src="images/book.svg">
+              <img src="images/book-light.svg">
+              <img src="images/file-light.svg">
+              <img src="images/file-media.svg">
+              <img src="images/file-media-light.svg">
+              <img src="images/root.svg">
+              <img src="images/root-light.svg">
+              
+              <pre><div class="edit-code" data-id="<%= file.id %>" contenteditable="true" ></div></pre>
+              
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+
+      <div class="keyboard" id="keyboard">
+        <div class="row">
+          <button>
+            <span><i>"</i><i>'</i></span>
+            <span>=</span>
+            <span><i>(</i><i>)</i></span>
+          </button>
+          <button>></button>
+          <button>[</button>
+          <button>]</button>
+          <button>"</button>
+          <button>'</button>
+          <button>;</button>
+          <button>:</button>
+          <button>$</button>
+          <button>&</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="footer">
+    <div class="left">
+      <span></span>
+    </div>
+    <div class="right">
+      <span><button><i class="fas fa-save"></i></button></span>
+      <span>HTML</span>
+    </div>
+  </div>
+</main>
+
+<!-- Menusito -->
+<div class="touchMenu" style="display: none;">
+  <div>
+    <input type="text">
+    <li><a href="">Open file</a></li>
+    <li><a href="">Delete</a></li>
+    <li><a href="">Rename</a></li>
+    <li><a href="">Select All</a></li>
+  </div>
+</div>
+
+<%- include('partials/modals') %>
+
+<%- include('partials/_footer') %>

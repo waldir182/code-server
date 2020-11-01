@@ -1,0 +1,5 @@
+[
+  { "name": "editor", "rute": "/root/editor/" },
+  { "name": "root", "rute": "/" },
+  {"name": "node-editor", "rute": "/root/node-editor/"}
+]

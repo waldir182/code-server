@@ -1,0 +1,42 @@
+.main-editor .header{
+  border-bottom: 0 !important;
+}
+
+.main-editor .header div{
+  width: 40%;
+  position: relative;
+}
+.main-editor .header div:nth-child(1){
+  background: var(--dark-two);
+  border-radius: 0 100px 0 0;
+  border-right: 1px solid rgba(0,0,0,0.9);
+}
+.main-editor .header div:nth-child(2){
+  box-shadow: 0 0 0px rgba(255,255,255,.4);
+}
+.main-editor .header div:nth-child(1):after{
+  background: ;
+  content: "";
+  position: absolute;
+  left: calc(100% - 3px);
+  bottom: 0;
+  height: 50%;
+  width: 100%;
+  box-shadow: -4px 4px 0 4px var(--dark-two);
+  border-radius: 0 0 0 100px;
+  border-bottom: 1px solid rgba(0,0,0,0.5);
+  border-left: 1px solid rgba(0,0,0,0.5);
+}
+.main-editor .header div:nth-child(1):before{
+  background: var(--dark-one);
+  content: "";
+  position: absolute;
+  left: calc(100% - 5px);
+  top: calc(50% - 5px);
+  height: 10px; 
+  width: 3px; 
+  box-shadow: 4px -4px 0 0px transparent;
+  border-left: .8px solid rgba(0,0,0,0.5);
+  transform: rotate(-27deg);
+  z-index: 1;
+}
